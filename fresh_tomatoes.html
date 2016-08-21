@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+        .left {
+            float: left;
+        }
+        .poster{
+            width: 20%;
+            margin-right: 25px;
+        }
+
+        .movie-info{
+            width: 75%;
+        }
+        .panel-body{
+            background-color: #eeeeee;
+        }
+        ul li{
+            line-height: 20px;
+        }
+        ul li p{
+            line-height: 1.5;
+        }
+        a {
+            color: inherit;
+        }
+        a:hover {
+            color: #000000;
+            text-decoration: underline;
+        }
+        .trailer{
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .trailer:hover{
+            color: #000000;
+            text-decoration: underline;
+        }
+
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.trailer', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-12 movie">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Inception</h3>
+      </div>
+      <div class="panel-body">
+        <div class="poster left">
+            <img class="img-thumbnail" src="http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg">
+        </div>
+
+        <div class="movie-info left">
+            <a href="http://www.imdb.com/title/tt1375666" target="_blank"><h2 class="movie-title">Inception </h2><em>(PG-13)</em></a>
+            <ul class="list-unstyled">
+                <li><strong>Release date: </strong>16 Jul 2010</li>
+                <li><strong>Genre: </strong>Action, Adventure, Sci-Fi</li>
+                <li><strong>Directed by: </strong>Christopher Nolan</li>
+                <li><strong>Actors: </strong>Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page, Tom Hardy</li>
+                <li><strong>IMDB: </strong><span>8.8 </span>(1,462,859 votes)</li>
+                <li><strong>Plot: </strong> <p>A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.</p></li>
+            </ul>
+            <strong class="trailer" data-trailer-youtube-id="8hP9D6kZseM" data-toggle="modal" data-target="#trailer">
+                <i class="glyphicon glyphicon-film"></i>
+                <span> Watch a trailer</span>
+            </strong>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col-md-12 movie">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Catch Me If You Can</h3>
+      </div>
+      <div class="panel-body">
+        <div class="poster left">
+            <img class="img-thumbnail" src="http://ia.media-imdb.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg">
+        </div>
+
+        <div class="movie-info left">
+            <a href="http://www.imdb.com/title/tt0264464" target="_blank"><h2 class="movie-title">Catch Me If You Can </h2><em>(PG-13)</em></a>
+            <ul class="list-unstyled">
+                <li><strong>Release date: </strong>25 Dec 2002</li>
+                <li><strong>Genre: </strong>Biography, Crime, Drama</li>
+                <li><strong>Directed by: </strong>Steven Spielberg</li>
+                <li><strong>Actors: </strong>Leonardo DiCaprio, Tom Hanks, Christopher Walken, Martin Sheen</li>
+                <li><strong>IMDB: </strong><span>8.0 </span>(524,019 votes)</li>
+                <li><strong>Plot: </strong> <p>The true story of Frank Abagnale Jr. who, before his 19th birthday, successfully conned millions of dollars' worth of checks as a Pan Am pilot, doctor, and legal prosecutor.</p></li>
+            </ul>
+            <strong class="trailer" data-trailer-youtube-id="71rDQ7z4eFg" data-toggle="modal" data-target="#trailer">
+                <i class="glyphicon glyphicon-film"></i>
+                <span> Watch a trailer</span>
+            </strong>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col-md-12 movie">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Source Code</h3>
+      </div>
+      <div class="panel-body">
+        <div class="poster left">
+            <img class="img-thumbnail" src="http://ia.media-imdb.com/images/M/MV5BMTY0MTc3MzMzNV5BMl5BanBnXkFtZTcwNDE4MjE0NA@@._V1_SX300.jpg">
+        </div>
+
+        <div class="movie-info left">
+            <a href="http://www.imdb.com/title/tt0945513" target="_blank"><h2 class="movie-title">Source Code </h2><em>(PG-13)</em></a>
+            <ul class="list-unstyled">
+                <li><strong>Release date: </strong>01 Apr 2011</li>
+                <li><strong>Genre: </strong>Mystery, Sci-Fi, Thriller</li>
+                <li><strong>Directed by: </strong>Duncan Jones</li>
+                <li><strong>Actors: </strong>Jake Gyllenhaal, Michelle Monaghan, Vera Farmiga, Jeffrey Wright</li>
+                <li><strong>IMDB: </strong><span>7.5 </span>(379,431 votes)</li>
+                <li><strong>Plot: </strong> <p>A soldier wakes up in someone else's body and discovers he's part of an experimental government program to find the bomber of a commuter train. A mission he has only 8 minutes to complete.</p></li>
+            </ul>
+            <strong class="trailer" data-trailer-youtube-id="NkTrG-gpIzE" data-toggle="modal" data-target="#trailer">
+                <i class="glyphicon glyphicon-film"></i>
+                <span> Watch a trailer</span>
+            </strong>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col-md-12 movie">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Pulp Fiction</h3>
+      </div>
+      <div class="panel-body">
+        <div class="poster left">
+            <img class="img-thumbnail" src="http://ia.media-imdb.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_SX300.jpg">
+        </div>
+
+        <div class="movie-info left">
+            <a href="http://www.imdb.com/title/tt0110912" target="_blank"><h2 class="movie-title">Pulp Fiction </h2><em>(R)</em></a>
+            <ul class="list-unstyled">
+                <li><strong>Release date: </strong>14 Oct 1994</li>
+                <li><strong>Genre: </strong>Crime, Drama</li>
+                <li><strong>Directed by: </strong>Quentin Tarantino</li>
+                <li><strong>Actors: </strong>Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta</li>
+                <li><strong>IMDB: </strong><span>8.9 </span>(1,324,182 votes)</li>
+                <li><strong>Plot: </strong> <p>The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</p></li>
+            </ul>
+            <strong class="trailer" data-trailer-youtube-id="s7EdQ4FqbhY" data-toggle="modal" data-target="#trailer">
+                <i class="glyphicon glyphicon-film"></i>
+                <span> Watch a trailer</span>
+            </strong>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col-md-12 movie">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Fight Club</h3>
+      </div>
+      <div class="panel-body">
+        <div class="poster left">
+            <img class="img-thumbnail" src="http://ia.media-imdb.com/images/M/MV5BNGM2NjQxZTAtMmU5My00YTk5LWFmOWMtYjZlYzk4YzMwNjFlXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg">
+        </div>
+
+        <div class="movie-info left">
+            <a href="http://www.imdb.com/title/tt0137523" target="_blank"><h2 class="movie-title">Fight Club </h2><em>(R)</em></a>
+            <ul class="list-unstyled">
+                <li><strong>Release date: </strong>15 Oct 1999</li>
+                <li><strong>Genre: </strong>Drama</li>
+                <li><strong>Directed by: </strong>David Fincher</li>
+                <li><strong>Actors: </strong>Edward Norton, Brad Pitt, Meat Loaf, Zach Grenier</li>
+                <li><strong>IMDB: </strong><span>8.8 </span>(1,347,001 votes)</li>
+                <li><strong>Plot: </strong> <p>An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more.</p></li>
+            </ul>
+            <strong class="trailer" data-trailer-youtube-id="SUXWAEX2jlg" data-toggle="modal" data-target="#trailer">
+                <i class="glyphicon glyphicon-film"></i>
+                <span> Watch a trailer</span>
+            </strong>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="col-md-12 movie">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">The Shawshank Redemption</h3>
+      </div>
+      <div class="panel-body">
+        <div class="poster left">
+            <img class="img-thumbnail" src="http://ia.media-imdb.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg">
+        </div>
+
+        <div class="movie-info left">
+            <a href="http://www.imdb.com/title/tt0111161" target="_blank"><h2 class="movie-title">The Shawshank Redemption </h2><em>(R)</em></a>
+            <ul class="list-unstyled">
+                <li><strong>Release date: </strong>14 Oct 1994</li>
+                <li><strong>Genre: </strong>Crime, Drama</li>
+                <li><strong>Directed by: </strong>Frank Darabont</li>
+                <li><strong>Actors: </strong>Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler</li>
+                <li><strong>IMDB: </strong><span>9.3 </span>(1,684,836 votes)</li>
+                <li><strong>Plot: </strong> <p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p></li>
+            </ul>
+            <strong class="trailer" data-trailer-youtube-id="6hB3S9bIaco" data-toggle="modal" data-target="#trailer">
+                <i class="glyphicon glyphicon-film"></i>
+                <span> Watch a trailer</span>
+            </strong>
+        </div>
+      </div>
+    </div>
+</div>
+
+    </div>
+  </body>
+</html>
