@@ -2,6 +2,7 @@ import webbrowser
 
 
 class Movie:
+    """Class Movie stores information about movies such as title, plot, poster and etc."""
     # defining an init function and initialising class properties with a fetched from API data
     def __init__(self, movie, trailer):
         self.title = movie['Title']
